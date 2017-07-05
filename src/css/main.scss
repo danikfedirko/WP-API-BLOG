@@ -1,0 +1,45 @@
+
+/* Preloader */
+.preloader{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Nav */
+.mdl-layout__header--transparent .mdl-navigation__link,
+.mdl-layout__header--transparent .mdl-layout__drawer-button, .mdl-layout-title{
+  color:#333
+}
+/* Articles listing */
+.article-listing{
+  display:flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+
+  article{
+    margin: 1em
+  }
+}
+
+/* Single Post */
+.single-post{
+  margin: 2em;
+
+  .title{
+   text-align: center;
+ }
+ .inner-content{
+   padding: 3em 1em
+ }
+ .thumbnail{
+    height: 30em;
+    overflow: hidden;
+ }
+ .thumbnail img{
+   width: 100%;
+ }
+
+}
