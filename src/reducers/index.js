@@ -5,6 +5,8 @@ import fetchThumb from './fetchThumb'
 import title from './title'
 import mainMenu from './mainMenu'
 import sidebars from './sidebars'
+import categories from './categories'
+import categoriePosts from './categoriePosts'
 
 const rootReducer = combineReducers({
     posts,
@@ -12,7 +14,9 @@ const rootReducer = combineReducers({
     fetchThumb,
     title,
     mainMenu,
-    sidebars
+    sidebars,
+    categories,
+    categoriePosts
 });
 
 export default rootReducer;
