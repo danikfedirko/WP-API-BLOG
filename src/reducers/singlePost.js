@@ -3,7 +3,8 @@ import {RECEIVE_SINGLE_POST_FULLFILLED} from '../actions/singlePost'
 const defaultState = {
   postContent: [],
   postTitle:[],
-  postThumb:''
+  postThumb:'',
+  relatedPosts:[]
 }
 
 export default function fetchSinglePost(state=defaultState, action){
@@ -14,7 +15,8 @@ export default function fetchSinglePost(state=defaultState, action){
         postContent: action.payload.postContent,
         postTitle: action.payload.postTitle,
         postThumb: action.payload.postThumb,
-        postDate: action.payload.postDate
+        postDate: action.payload.postDate,
+        relatedPosts: action.payload.relatedPosts
       }
     default:
       return state

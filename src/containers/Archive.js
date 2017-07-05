@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class'
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/posts';
 import {Link} from 'react-router-dom'
-import Post from '../components/Post';
+import ArchivePost from '../components/ArchivePost';
 
-class Archive extends Component {
+const Archive = createReactClass ({
 
     componentWillMount() {
         const {fetchPosts, pageNum = 1} = this.props
@@ -13,7 +14,7 @@ class Archive extends Component {
     }
     buildPosts(posts) {
         return posts.map(post =>
-            <Post post={post} key={post.id} featuredmedia={post._links["wp:featuredmedia"][0].href}/>
+            <ArchivePost post={post} key={post.id} featuredmedia={post._links["wp:featuredmedia"][0].href}/>
         );
     }
 
@@ -69,7 +70,7 @@ class Archive extends Component {
             </div>
         );
     }
-}
+})
 
 Archive.PropTypes={
   posts: PropTypes.array.isRequired,

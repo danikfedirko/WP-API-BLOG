@@ -23,7 +23,8 @@ export function receiveSinglePost(postData) {
             postContent:postData.content,
             postTitle: postData.title,
             postThumb:postData._links["wp:featuredmedia"][0].href,
-            postDate: postData.date
+            postDate: postData.date,
+            relatedPosts: postData["jetpack-related-posts"]
         }
     };
 }

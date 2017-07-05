@@ -17,10 +17,7 @@ var SidebarHomePage = createReactClass({
   render () {
     const {sidebar} = this.props
     return (
-        <div className="mdl-cell mdl-cell--4-col">
-          <div className="mdl-card mdl-shadow--2dp" dangerouslySetInnerHTML={this.createMarkup(sidebar.rendered)}>
-
-          </div>
+        <div id="sidebar" className="mdl-cell mdl-cell--4-col" dangerouslySetInnerHTML={this.createMarkup(sidebar.rendered)}>
         </div>
     )
   }
