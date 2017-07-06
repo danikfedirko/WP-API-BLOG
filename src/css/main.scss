@@ -1,55 +1,104 @@
+/* General */
+body{
+  background-color: #f7f7f7;
+}
+img {
+  width: 100%;
+  height: auto;
+}
 
+a{
+  text-decoration: none;
+  color: #333;
+}
+  .mdl-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
 /* Preloader */
-.preloader{
+
+.preloader {
   display: flex;
   align-items: center;
   align-content: center;
   width: 100%;
   height: 100%;
 }
-
 /* Nav */
-.mdl-layout__header--transparent .mdl-navigation__link,
-.mdl-layout__header--transparent .mdl-layout__drawer-button, .mdl-layout-title{
-  color:#333
+
+.mdl-layout-title,
+.mdl-layout__header--transparent .mdl-layout__drawer-button,
+.mdl-layout__header--transparent .mdl-navigation__link {
+  color: #333;
 }
 /* Articles listing */
-.article-listing{
-  display:flex;
+
+.article-listing {
+  display: flex;
   flex-flow: row;
   flex-wrap: wrap;
 
-  article{
-    margin: 1em
+  article {
+    margin: 1em;
   }
 }
+/* Categories */
 
+.categorie-posts {
+  display: flex;
+  align-items: stretch;
+  flex-flow: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+
+  article {
+    box-sizing: border-box;
+    width: 33.333%;
+    margin: 0;
+    padding-right: calc( 10px/2 );
+    padding-left: calc( 10px/2 );
+    margin-bottom: 2em;
+  }
+  .post-thumbnail{
+    height: 10em;
+  }
+}
 /* Single Post */
-.single-post{
+
+.single-post {
   margin: 2em;
 
-  .title{
-   text-align: center;
- }
- .inner-content{
-   padding: 3em 1em
- }
- .thumbnail{
-    height: 30em;
-    overflow: hidden;
- }
- .thumbnail img{
-   width: 100%;
- }
-
-}
-
-/*Sidebar*/
-#sidebar{
-  aside{
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+  .title {
+    text-align: center;
   }
 
+  .inner-content {
+    padding: 3em 1em;
+  }
 
+  .thumbnail {
+    height: 30em;
+    overflow: hidden;
+  }
 
+  .thumbnail img {
+    width: 100%;
+  }
+}
+/*Sidebar*/
+
+#sidebar {
+  padding-left: 2em;
+
+  aside {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+  }
+  .social li {
+    display: inline-block;
+  }
+  .social img {
+    width: 40px;
+    height: 40px;
+  }
 }

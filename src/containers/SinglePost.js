@@ -24,7 +24,7 @@ const SinglePost = createReactClass({
         <Menu/>
         <div className="primary mdl-grid">
         <article className="single-post mdl-cell mdl-cell--8-col">
-          <div className="mdl-shadow--4dp">
+          <div className="mdl-shadow--4dp mdl-card">
             {/*Thumbnail*/}
             <div className="thumbnail">
               <img src={thumbSrc}/>

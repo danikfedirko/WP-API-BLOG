@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
 
-  const ArchivePost = createReactClass({
+  const CategorieBlockPost = createReactClass({
     getInitialState: function() {
       return {
         thumbSrc: ''
@@ -32,18 +32,11 @@ import {Link} from 'react-router-dom'
         return (
           <article>
             <div className="mdl-card mdl-shadow--2dp">
-            <div className="mdl-card__title mdl-card--expand" style={{backgroundImage:'url('+this.state.thumbSrc+')'}}>
-
-              <h2 className="mdl-card__title-text">{post.title.rendered}</h2>
+            <div className="post-thumbnail mdl-card--expand" style={{backgroundImage:'url('+this.state.thumbSrc+')',backgroundSize:'cover'}}>
             </div>
-            <div className="mdl-card__supporting-text" dangerouslySetInnerHTML={this.createMarkup(post.excerpt.rendered)}>
-
-            </div>
-            <div className="mdl-card__supporting-text">
-              {post.author.first_name}
-            </div>
+            <Link to={{ pathname:post.slug+'--'+post.id, query: { id: post.id } }}><h4>{post.title.rendered}</h4></Link>
             <div className="mdl-card__actions mdl-card--border">
-              <Link className="mdl-button mdl-js-button mdl-button--raised" to={{ pathname:post.slug+'--'+post.id, query: { id: post.id } }}>
+              <Link className="mdl-button mdl-js-button" to={{ pathname:post.slug+'--'+post.id, query: { id: post.id } }}>
                 Read more
               </Link>
             </div>
@@ -53,4 +46,4 @@ import {Link} from 'react-router-dom'
   }
   })
 
-  export default ArchivePost
+  export default CategorieBlockPost

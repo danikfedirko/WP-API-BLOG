@@ -13,7 +13,7 @@ const Categories = createReactClass({
   render () {
     const {categories} = this.props
     return (
-      <div>
+      <div className="mdl-cell mdl-cell--8-col">
         {categories.map(categorie => {
           return <CategorieBlock key={categorie.id} categorie={categorie}/>
         })}
@@ -27,6 +27,10 @@ function mapStateToProps(state) {
   return{
     categories:state.categories.categories
   }
+}
+
+Categories.PropTypes = {
+  categories: PropTypes.array.isRequired
 }
 
 export default connect(
