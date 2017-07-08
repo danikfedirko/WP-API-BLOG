@@ -6,6 +6,8 @@ import {fetchSinglePost} from '../actions/singlePost'
 import {fetchThumb} from '../actions/fetchThumb'
 import Menu from './Menu'
 import RelatedPost from '../components/RelatedPost'
+import SidebarHomePage from './SidebarHomePage'
+import ProgressiveImage from 'react-progressive-bg-image';
 
 const SinglePost = createReactClass({
   componentWillMount: function() {
@@ -17,7 +19,7 @@ const SinglePost = createReactClass({
     return {__html: html};
   },
   render() {
-    const {postContent, postTitle, postThumb, postDate, thumbSrc, fetchThumb, relatedPosts} = this.props
+    const {postContent, postTitle, postThumb, postDate,thumbFetching, thumbSrcSmall,thumbSrcNormal, fetchThumb, relatedPosts} = this.props
     fetchThumb(postThumb)
     return (
       <div className="post single">
@@ -27,7 +29,20 @@ const SinglePost = createReactClass({
           <div className="mdl-shadow--4dp mdl-card">
             {/*Thumbnail*/}
             <div className="thumbnail">
-              <img src={thumbSrc}/>
+              {thumbFetching ?
+                <div style={{backgroundColor:'#ccc',height:'100%',width:'100%'}}></div>
+                :
+              <ProgressiveImage
+               placeholder={thumbSrcSmall}
+               src={thumbSrcNormal}
+               blur={2}
+               opacity={1}
+               transition="all 1s linear"
+               style={{
+                 backgroundSize: 'cover'
+               }}
+               />
+           }
             </div>
             {/*Post meta*/}
             <div className="post-meta">
@@ -37,13 +52,14 @@ const SinglePost = createReactClass({
             {/*Post content*/}
             <div className="inner-content" dangerouslySetInnerHTML={this.createMarkup(postContent.rendered)}></div>
           </div>
-
+          <div className="relatedPosts">
           {/*Related Posts*/}
           {relatedPosts.map(post =>{
             return <RelatedPost post={post} thumbSrc={post.img.src}/>
           })}
+        </div>
         </article>
-
+        <SidebarHomePage/>
       </div>
       </div>
     )
@@ -53,7 +69,8 @@ const SinglePost = createReactClass({
 SinglePost.PropTypes = {
   postContent: PropTypes.object.isRequired,
   postTitle: PropTypes.object.isRequired,
-  thumbSrc: PropTypes.string.isRequired,
+  thumbSrcSmall: PropTypes.string.isRequired,
+  thumbSrcNormal: PropTypes.string.isRequired,
   postDate: PropTypes.string.isRequired,
   relatedPosts: PropTypes.array.isRequired
 }
@@ -64,7 +81,9 @@ function mapStateToProps(state) {
     postTitle: state.fetchSinglePost.postTitle,
     postDate: state.fetchSinglePost.postDate,
     postThumb: state.fetchSinglePost.postThumb,
-    thumbSrc: state.fetchThumb.thumbSrc,
+    thumbSrcSmall: state.fetchThumb.thumbSrcSmall,
+    thumbSrcNormal: state.fetchThumb.thumbSrcNormal,
+    thumbFetching:state.fetchThumb.fetching,
     relatedPosts: state.fetchSinglePost.relatedPosts
   }
 }

@@ -11,22 +11,24 @@ const CategorieBlock = createReactClass({
     return {categoriePosts: []};
   },
   buildPosts(categorie) {
-    axios.get(WP_URL + '/posts?categories=' + categorie.id + '&per_page=6')
+    axios.get(WP_URL + '/posts?categories=' + categorie.id + '&per_page=6&orderby=date')
     .then((response) => {
       this.setState({categoriePosts: response.data})
-    })
+    }) 
+  },
+  componentWillMount: function() {
+    const {categorie} = this.props
+    this.buildPosts(categorie)
   },
   render() {
     const {categorie, categoriePosts} = this.props
-    this.buildPosts(categorie)
-
     return (
       <div className="categorie-block">
         <div className="categorie-title">
-          <h3>{categorie.name}</h3>
+          <Link to={categorie.slug}><h3>{categorie.name}</h3></Link>
         </div>
         <div className="categorie-posts">
-          {this.state.categoriePosts.map(post => {
+          {this.state.categoriePosts.map(post =>  {
             return <CategorieBlockPost post={post} key={post.id} featuredmedia={post._links["wp:featuredmedia"][0].href}/>
           })}
         </div>

@@ -8,6 +8,7 @@ const RelatedPost = createReactClass({
   render() {
     const {post, thumbSrc} = this.props
     return (
+      <div className="mdl-cell mdl-cell--4-col">
       <article className="mdl-card mdl-shadow--2dp">
         <div className="mdl-card__title mdl-card--expand" style={{
           backgroundImage: 'url(' + thumbSrc + ')'
@@ -16,6 +17,7 @@ const RelatedPost = createReactClass({
           <Link to={{pathname:post.url.replace(URL,'').replace('/','')+'--'+post.id, query: { id: post.id } }}><h2 className="mdl-card__title-text">{post.title}</h2></Link>
         </div>
       </article>
+    </div>
     )
   }
 })

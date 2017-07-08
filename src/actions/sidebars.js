@@ -7,8 +7,8 @@ export const FETCH_SIDEBARS_ERROR = 'FETCH_SIDEBARS_ERROR'
 
 export function fetchSidebars() {
   var sidebars = []
-  return function(dispatch) {
-    axios.get(WP_URL_UNI + '/wp-rest-api-sidebars/v1/sidebars')
+  return async function(dispatch) {
+    await axios.get(WP_URL_UNI + '/wp-rest-api-sidebars/v1/sidebars')
     .then(response => {
       axios.get(WP_URL_UNI + '/wp-rest-api-sidebars/v1/sidebars/' + response.data[0].id)
       .then(response => {

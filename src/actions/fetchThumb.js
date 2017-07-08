@@ -9,7 +9,7 @@ export function fetchThumb(featuredmedia) {
     return function (dispatch) {
       axios.get(featuredmedia)
         .then((response) => {
-          dispatch(receiveThumb(response))
+          dispatch(receiveThumb(response.data["media_details"]))
         })
         .catch((err) => {
           dispatch({type: FETCH_POST_THUMB_ERROR, thumbSrc: err})
@@ -20,6 +20,6 @@ export function fetchThumb(featuredmedia) {
 export function receiveThumb(response) {
   return{
     type: RECEIVE_POST_THUMB,
-      thumbSrc: response.data.source_url
+    thumbSizes: response.sizes
   }
 }

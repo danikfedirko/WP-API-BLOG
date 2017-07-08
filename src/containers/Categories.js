@@ -4,11 +4,19 @@ import createReactClass from 'create-react-class'
 import { connect } from 'react-redux';
 import CategorieBlock from './CategorieBlock'
 import {fetchCategories} from '../actions/categories'
+import {store} from '../index'
 
 const Categories = createReactClass({
   componentWillMount: function() {
     const {fetchCategories} = this.props
     fetchCategories()
+  },
+  componentDidMount: function() {
+    let unsubscribe = store.subscribe(this.unsubscribe)
+    unsubscribe()
+  },
+  unsubscribe(){
+    return 0
   },
   render () {
     const {categories} = this.props

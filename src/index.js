@@ -7,7 +7,7 @@ import SinglePost from './containers/SinglePost'
 import './css/main.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
-const store = configureStore()
+export const store = configureStore()
 
 ReactDOM.render(
   <Provider store={store}>
