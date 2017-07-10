@@ -14,11 +14,14 @@ var Menu = createReactClass({
     fetchTitle()
     fetchMainMenu()
   },
+  pageTitle(title){
+    document.title = title
+  },
   showDropdown(menu_item) {
     if (menu_item.children != undefined && Object.keys(menu_item.children).length > 0) {
       {/* dropdown */}
       return (
-        <MenuDropdown menu_item={menu_item}/>
+        <MenuDropdown className="mdl-navigation__link" menu_item={menu_item}/>
       )
     }
   },
@@ -37,13 +40,20 @@ var Menu = createReactClass({
             {/* Title */}
             <span className="mdl-layout-title">
               <Link to="/">{websiteTitle}</Link>
+              {this.pageTitle(websiteTitle)}
             </span>
             {/* Add spacer, to align navigation to the right */}
             <div className="mdl-layout-spacer"></div>
             {/* Navigation */}
             <nav className="mdl-navigation">
-              {items.map(menu_item => <Link className="mdl-navigation__link" key={menu_item.id} to={this.menuItemLink(menu_item)}>{menu_item.title} {this.showDropdown(menu_item, this)}
-              </Link>)
+              {items.map(menu_item =>
+              <span key={menu_item.id}>
+              <Link className="mdl-navigation__link" to={this.menuItemLink(menu_item)}>
+              {menu_item.title}
+              </Link>
+              {this.showDropdown(menu_item, this)}
+            </span>
+            )
 }
             </nav>
           </div>

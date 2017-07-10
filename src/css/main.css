@@ -15,6 +15,9 @@ a {
   height: 100%;
   position: relative; }
 
+.primary-content {
+  padding: 1em 4em; }
+
 /* Preloader */
 .preloader {
   display: flex;
@@ -24,10 +27,12 @@ a {
   height: 100%; }
 
 /* Nav */
-.mdl-layout-title,
+.mdl-layout__header--transparent .mdl-layout-title,
 .mdl-layout__header--transparent .mdl-layout__drawer-button,
-.mdl-layout__header--transparent .mdl-navigation__link {
+.mdl-layout__header--transparent .mdl-navigation__link, .mdl-layout__header--transparent .mdl-navigation {
   color: #333; }
+.mdl-layout__header--transparent .mdl-navigation__link {
+  display: inline-block; }
 
 /* Articles listing */
 .article-listing {

@@ -16,6 +16,9 @@ a{
     height: 100%;
     position: relative;
   }
+  .primary-content{
+    padding: 1em 4em;
+  }
 /* Preloader */
 
 .preloader {
@@ -27,13 +30,18 @@ a{
 }
 /* Nav */
 
+.mdl-layout__header--transparent {
 .mdl-layout-title,
-.mdl-layout__header--transparent .mdl-layout__drawer-button,
-.mdl-layout__header--transparent .mdl-navigation__link {
+.mdl-layout__drawer-button,
+ .mdl-navigation__link, .mdl-navigation {
   color: #333;
 }
-/* Articles listing */
+.mdl-navigation__link{
+  display: inline-block;
+}
 
+}
+/* Articles listing */
 .article-listing {
   display: flex;
   flex-flow: row;

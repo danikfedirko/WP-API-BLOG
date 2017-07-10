@@ -3,6 +3,7 @@ import createReactClass from 'create-react-class'
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom'
+import {URL} from '../wp-url'
 
 var MenuDropdown = createReactClass({
   getInitialState() {
@@ -30,8 +31,9 @@ var MenuDropdown = createReactClass({
             <ul className="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" data-upgraded=",MaterialMenu,MaterialRipple" style={{
               clip: 'rect(0px 124px 160px 0px)'
             }}>
-              {menu_item.children.map(dropdown_item => <li className="mdl-menu__item" key={dropdown_item.id}>
-                <Link to={dropdown_item.url.replace(URL, '')}>{dropdown_item.title}</Link>
+              {menu_item.children.map(dropdown_item =>
+              <li className="mdl-menu__item" key={dropdown_item.id}>
+                <Link to={{pathname:'/pages/'+dropdown_item.url.replace(URL,'').replace('/','')+'--'+dropdown_item.object_id, query: { id: dropdown_item.object_id }} }>{dropdown_item.title}</Link>
               </li>)}
             </ul>
           </div>

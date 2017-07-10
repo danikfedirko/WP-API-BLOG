@@ -10,7 +10,7 @@ var Home = createReactClass({
     return (
       <div className="home">
         <Menu/>
-        <div className="mdl-grid">
+        <div className="mdl-grid primary-content">
           <Categories/>
           <SidebarHomePage/>
         </div>

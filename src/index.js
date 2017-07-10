@@ -4,6 +4,7 @@ import {Provider} from 'react-redux'
 import configureStore from './store/configureStore'
 import Home from './containers/Home'
 import SinglePost from './containers/SinglePost'
+import Page from './containers/Page'
 import './css/main.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
@@ -16,6 +17,8 @@ ReactDOM.render(
     <Route path='/' component={Home} exact>
     </Route>
     <Route path='/:slug--:id' component={SinglePost}>
+    </Route>
+    <Route path='/pages/:slug--:id' component={Page}>
     </Route>
   </Switch>
   </BrowserRouter>

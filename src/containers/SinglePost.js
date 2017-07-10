@@ -18,6 +18,9 @@ const SinglePost = createReactClass({
   createMarkup(html) {
     return {__html: html};
   },
+  postTitle(title){
+    document.title = title;
+  },
   render() {
     const {postContent, postTitle, postThumb, postDate,thumbFetching, thumbSrcSmall,thumbSrcNormal, fetchThumb, relatedPosts} = this.props
     fetchThumb(postThumb)
@@ -46,7 +49,8 @@ const SinglePost = createReactClass({
             </div>
             {/*Post meta*/}
             <div className="post-meta">
-              <h1 className="title">{postTitle.rendered}</h1>
+              <h1 className="title" dangerouslySetInnerHTML={this.createMarkup(postTitle.rendered)}></h1>
+              {this.postTitle(postTitle.rendered)}
               <span className="mdl-card__subtitle-text">{postDate}</span>
             </div>
             {/*Post content*/}

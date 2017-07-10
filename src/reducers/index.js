@@ -7,6 +7,7 @@ import mainMenu from './mainMenu'
 import sidebars from './sidebars'
 import categories from './categories'
 import categoriePosts from './categoriePosts'
+import page from './page'
 
 const rootReducer = combineReducers({
     posts,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
     mainMenu,
     sidebars,
     categories,
-    categoriePosts
+    categoriePosts,
+    page
 });
 
 export default rootReducer;

@@ -14,7 +14,7 @@ const CategorieBlock = createReactClass({
     axios.get(WP_URL + '/posts?categories=' + categorie.id + '&per_page=6&orderby=date')
     .then((response) => {
       this.setState({categoriePosts: response.data})
-    }) 
+    })
   },
   componentWillMount: function() {
     const {categorie} = this.props

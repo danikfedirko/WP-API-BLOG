@@ -11,13 +11,6 @@ const Categories = createReactClass({
     const {fetchCategories} = this.props
     fetchCategories()
   },
-  componentDidMount: function() {
-    let unsubscribe = store.subscribe(this.unsubscribe)
-    unsubscribe()
-  },
-  unsubscribe(){
-    return 0
-  },
   render () {
     const {categories} = this.props
     return (
