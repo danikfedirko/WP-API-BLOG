@@ -25,10 +25,9 @@ const SinglePost = createReactClass({
     const {postContent, postTitle, postThumb, postDate,thumbFetching, thumbSrcSmall,thumbSrcNormal, fetchThumb, relatedPosts} = this.props
     fetchThumb(postThumb)
     return (
-      <div className="post single">
-        <Menu/>
-        <div className="primary mdl-grid">
-        <article className="single-post mdl-cell mdl-cell--8-col">
+      <div className="post single mdl-cell mdl-cell--8-col">
+        <div className="primary">
+        <article className="single-post">
           <div className="mdl-shadow--4dp mdl-card">
             {/*Thumbnail*/}
             <div className="thumbnail">
@@ -63,7 +62,6 @@ const SinglePost = createReactClass({
           })}
         </div>
         </article>
-        <SidebarHomePage/>
       </div>
       </div>
     )

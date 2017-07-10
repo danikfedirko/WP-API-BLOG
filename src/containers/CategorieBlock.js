@@ -25,7 +25,7 @@ const CategorieBlock = createReactClass({
     return (
       <div className="categorie-block">
         <div className="categorie-title">
-          <Link to={categorie.slug}><h3>{categorie.name}</h3></Link>
+          <Link to={'category/'+categorie.slug+'--'+categorie.id}><h3>{categorie.name}</h3></Link>
         </div>
         <div className="categorie-posts">
           {this.state.categoriePosts.map(post =>  {

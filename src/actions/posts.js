@@ -6,24 +6,22 @@ export const FETCH_POSTS = 'FETCH_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const FETCH_POSTS_ERROR = "FETCH_POSTS_ERROR"
 
-export function fetchPosts(pageNum, POSTS_PER_PAGE) {
+export function fetchPosts(filter) {
    return function (dispatch) {
-    return axios.get(WP_URL + '/posts?filter[paged]=' + pageNum + '&filter[posts_per_page]=' + POSTS_PER_PAGE)
+    return axios.get(WP_URL + '/posts'+filter)
       .then((response) => {
-        dispatch(receivePosts(pageNum, response))
+        dispatch(receivePosts(response))
       })
       .catch((err) => {
-      dispatch({type: FETCH_POSTS_ERROR, payload: err})
+      return {type: FETCH_POSTS_ERROR, payload: err}
       })
    }
 }
 
-export function receivePosts(pageNum, response) {
+export function receivePosts(response) {
     return {
         type: RECEIVE_POSTS,
         payload: {
-            pageNum: pageNum,
-            totalPages: response.headers["x-wp-totalpages"],
             posts: response.data
         }
     };

@@ -1,6 +1,7 @@
 /* General */
 body{
   background-color: #f7f7f7;
+  color: #333;
 }
 img {
   width: 100%;
@@ -39,7 +40,9 @@ a{
 .mdl-navigation__link{
   display: inline-block;
 }
-
+.mdl-textfield__input{
+  color:#333
+}
 }
 /* Articles listing */
 .article-listing {
@@ -112,6 +115,7 @@ a{
 
 #sidebar {
   padding-left: 2em;
+  margin-top: 1.5em;
 
   aside {
     position: relative;

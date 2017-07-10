@@ -7,6 +7,7 @@ import {fetchTitle} from '../actions/title'
 import {fetchMainMenu} from '../actions/mainMenu'
 import {URL} from '../wp-url';
 import MenuDropdown from '../components/MenuDropdown'
+import SearchHandler from '../containers/SearchHandler'
 
 var Menu = createReactClass({
   componentWillMount: function() {
@@ -56,6 +57,7 @@ var Menu = createReactClass({
             )
 }
             </nav>
+          <SearchHandler/>
           </div>
         </header>
         <div className="mdl-layout__drawer">

@@ -1,6 +1,7 @@
 /* General */
 body {
-  background-color: #f7f7f7; }
+  background-color: #f7f7f7;
+  color: #333; }
 
 img {
   width: 100%;
@@ -33,6 +34,8 @@ a {
   color: #333; }
 .mdl-layout__header--transparent .mdl-navigation__link {
   display: inline-block; }
+.mdl-layout__header--transparent .mdl-textfield__input {
+  color: #333; }
 
 /* Articles listing */
 .article-listing {
@@ -84,7 +87,8 @@ a {
 
 /*Sidebar*/
 #sidebar {
-  padding-left: 2em; }
+  padding-left: 2em;
+  margin-top: 1.5em; }
   #sidebar aside {
     position: relative;
     margin-bottom: 20px;

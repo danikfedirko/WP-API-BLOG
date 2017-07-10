@@ -33,7 +33,6 @@ const Page = createReactClass({
     fetchThumb(pageThumb)
     return (
       <div className="page align-center">
-        <Menu/>
         <article className="single-post mdl-cell mdl-cell--8-col">
           <div className="mdl-shadow--4dp mdl-card">
             {/*Thumbnail*/}

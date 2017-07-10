@@ -33,7 +33,7 @@ var MenuDropdown = createReactClass({
             }}>
               {menu_item.children.map(dropdown_item =>
               <li className="mdl-menu__item" key={dropdown_item.id}>
-                <Link to={{pathname:'/pages/'+dropdown_item.url.replace(URL,'').replace('/','')+'--'+dropdown_item.object_id, query: { id: dropdown_item.object_id }} }>{dropdown_item.title}</Link>
+                <Link to={'/pages/' + dropdown_item.url.replace(URL,'').replace('/','') + '--' + dropdown_item.object_id}>{dropdown_item.title}</Link>
               </li>)}
             </ul>
           </div>

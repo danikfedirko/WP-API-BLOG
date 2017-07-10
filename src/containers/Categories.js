@@ -14,7 +14,7 @@ const Categories = createReactClass({
   render () {
     const {categories} = this.props
     return (
-      <div className="mdl-cell mdl-cell--8-col">
+      <div className="categories-list">
         {categories.map(categorie => {
           return <CategorieBlock key={categorie.id} categorie={categorie}/>
         })}
