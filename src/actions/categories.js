@@ -8,7 +8,7 @@ export const FETCH_CATEGORIES_ERROR = 'FETCH_CATEGORIES_ERROR'
 export function fetchCategories() {
   return function(dispatch){
   dispatch({type: FETCH_CATEGORIES})
-  axios.get(WP_URL + '/categories')
+  axios.get(WP_URL + '/categories?orderby=count&order=desc')
   .then(response =>{
     dispatch(receiveCategories(response.data))
   })

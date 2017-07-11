@@ -25,7 +25,7 @@ const CategorieBlockPost = createReactClass({
   render() {
     const {post, link} = this.props;
     return (
-      <article>
+      <article className="animated fadeIn">
         <div className="mdl-card mdl-shadow--2dp">
           <div className="post-thumbnail mdl-card--expand">
             {this.state.thumbFetching
@@ -37,7 +37,7 @@ const CategorieBlockPost = createReactClass({
                 backgroundSize: 'cover',
                 backgroundPosition:'center'
               }}/>
-}
+            }
           </div>
           <div className="mdl-card__supporting-text">
             <Link to={{
@@ -49,9 +49,7 @@ const CategorieBlockPost = createReactClass({
               <h4 dangerouslySetInnerHTML={this.createMarkup(post.title.rendered)}></h4>
             </Link>
           </div>
-          <div className="mdl-card__actions mdl-card--border">
-            <ReadMoreButton post={post}/>
-          </div>
+
         </div>
       </article>
     );

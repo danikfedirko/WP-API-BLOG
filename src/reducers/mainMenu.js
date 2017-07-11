@@ -15,8 +15,7 @@ export default function fetchMainMenu(state=defaultState, action) {
     ...state,
         payload:{
           fetching: true,
-          fetched: false,
-          items: []
+          fetched: false
         }
       }
       case RECEIVE_MAIN_MENU:

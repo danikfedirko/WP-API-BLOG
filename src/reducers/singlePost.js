@@ -1,6 +1,7 @@
-import {RECEIVE_SINGLE_POST_FULLFILLED} from '../actions/singlePost'
+import {RECEIVE_SINGLE_POST, FETCH_SINGLE_POST, FETCH_SINGLE_POST_ERROR} from '../actions/singlePost'
 
 const defaultState = {
+  fetching:true,
   postContent: [],
   postTitle:[],
   postThumb:'',
@@ -9,15 +10,27 @@ const defaultState = {
 
 export default function fetchSinglePost(state=defaultState, action){
   switch (action.type) {
-    case RECEIVE_SINGLE_POST_FULLFILLED:
+    case FETCH_SINGLE_POST:
+     return{
+       ...state,
+       fetching:true
+     }
+    case RECEIVE_SINGLE_POST:
     return{
         ...state,
+        fetching:false,
         postContent: action.payload.postContent,
         postTitle: action.payload.postTitle,
         postThumb: action.payload.postThumb,
         postDate: action.payload.postDate,
         relatedPosts: action.payload.relatedPosts
       }
+    case FETCH_SINGLE_POST_ERROR:
+      return{
+        ...state,
+      fetching:false,
+      err:action.payload.err
+    }
     default:
       return state
   }

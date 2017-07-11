@@ -7,6 +7,7 @@ export const FETCH_MAIN_MENU_ERROR = 'FETCH_MAIN_MENU_ERROR'
 
 export function fetchMainMenu() {
   return function(dispatch) {
+    dispatch({type:FETCH_MAIN_MENU})
     axios.get(WP_URL_UNI + '/wp-api-menus/v2/menus')
     .then(response => {
       const menu_id = response.data[0].term_id

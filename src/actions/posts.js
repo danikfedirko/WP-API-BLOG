@@ -8,6 +8,7 @@ export const FETCH_POSTS_ERROR = "FETCH_POSTS_ERROR"
 
 export function fetchPosts(filter) {
    return function (dispatch) {
+    return {type: FETCH_POSTS}
     return axios.get(WP_URL + '/posts'+filter)
       .then((response) => {
         dispatch(receivePosts(response))

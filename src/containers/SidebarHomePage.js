@@ -17,7 +17,7 @@ var SidebarHomePage = createReactClass({
   render () {
     const {sidebar} = this.props
     return (
-        <div id="sidebar" className="mdl-cell mdl-cell--4-col">
+        <div id="sidebar" className="animated fadeIn mdl-cell mdl-cell--4-col">
           <div dangerouslySetInnerHTML={this.createMarkup(sidebar.rendered)}>
           </div>
         </div>

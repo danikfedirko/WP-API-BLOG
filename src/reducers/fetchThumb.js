@@ -19,18 +19,18 @@ export default function fetchThumb(state=defaultState, action) {
             return{
               ...state,
               thumbSrcSmall: action.thumbSizes.thumbnail.source_url,
-              thumbSrcNormal: action.thumbSizes.large.source_url,
+              thumbSrcNormal: action.thumbSizes.full.source_url,
               fetching:false,
               fetched:true
             }
             case FETCH_POST_THUMB_ERROR:
               return{
                 ...state,
-                fetching:true,
+                fetching:false,
                 fetched:false
               }
-        default:{
+        default:
             return state;
-          }
+
     }
 }

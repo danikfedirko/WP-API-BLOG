@@ -4,7 +4,6 @@ import createReactClass from 'create-react-class'
 import { connect } from 'react-redux';
 import CategorieBlock from './CategorieBlock'
 import {fetchCategories} from '../actions/categories'
-import {store} from '../index'
 
 const Categories = createReactClass({
   componentWillMount: function() {

@@ -33,10 +33,14 @@ var Menu = createReactClass({
       : '#')
   },
   render() {
-    const {websiteTitle, items} = this.props
+    const {websiteTitle, items, menuFetching} = this.props
     return (
       <div className="nav">
-        <header className="mdl-layout__header mdl-layout__header--transparent">
+        { menuFetching ?
+            <div></div>
+          :
+          <div>
+        <header className="animated fadeInDown mdl-layout__header mdl-layout__header--transparent">
           <div className="mdl-layout__header-row">
             {/* Title */}
             <span className="mdl-layout-title">
@@ -55,7 +59,7 @@ var Menu = createReactClass({
               {this.showDropdown(menu_item, this)}
             </span>
             )
-}
+            }
             </nav>
           <SearchHandler/>
           </div>
@@ -69,6 +73,8 @@ var Menu = createReactClass({
           </nav>
         </div>
       </div>
+      }
+      </div>
     )
   }
 })
@@ -79,7 +85,11 @@ Menu.PropTypes = {
 }
 
 function mapStateToProps(state) {
-  return {websiteTitle: state.title.payload.websiteTitle, items: state.mainMenu.payload.items}
+  return {
+    websiteTitle: state.title.payload.websiteTitle,
+    menuFetching:state.mainMenu.payload.fetching,
+    items: state.mainMenu.payload.items
+  }
 }
 
 export default connect(mapStateToProps, {fetchTitle, fetchMainMenu})(Menu)

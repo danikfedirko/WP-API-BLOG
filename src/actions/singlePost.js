@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { WP_URL } from '../wp-url';
 
-
-export const RECEIVE_SINGLE_POST_FULLFILLED = 'RECEIVE_SINGLE_POST_FULLFILLED'
+export const FETCH_SINGLE_POST = 'FETCH_SINGLE_POST'
+export const FETCH_SINGLE_POST_ERROR = 'FETCH_SINGLE_POST_ERROR'
+export const RECEIVE_SINGLE_POST = 'RECEIVE_SINGLE_POST'
 
 export function fetchSinglePost(id) {
 return function(dispatch) {
+    dispatch({type:FETCH_SINGLE_POST})
     axios.get(WP_URL + '/posts/'+id)
       .then((response) => {
         dispatch(receiveSinglePost(response.data))
@@ -18,7 +20,7 @@ return function(dispatch) {
 
 export function receiveSinglePost(postData) {
     return {
-        type: RECEIVE_SINGLE_POST_FULLFILLED,
+        type: RECEIVE_SINGLE_POST,
         payload: {
             postContent:postData.content,
             postTitle: postData.title,

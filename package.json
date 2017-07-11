@@ -9,6 +9,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-draggable": "^2.2.6",
     "react-progressive-bg-image": "^2.0.4",
     "react-progressive-image": "^0.1.2",
     "react-redux": "^5.0.5",
