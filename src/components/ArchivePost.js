@@ -45,14 +45,9 @@ import ReadMoreButton from './ReadMoreButton'
                 }}/>
   }
               <div className="mdl-card__supporting-text">
-                <Link to={{
-                  pathname: post.slug + '--' + post.id,
-                  query: {
-                    id: post.id
-                  }
-                }}>
-              </Link>
+                <Link to={'/' + post.slug + '--' + post.id}>
                 <h2 className="mdl-card__title-text">{post.title.rendered}</h2>
+              </Link>
               </div>
             <div className="mdl-card__supporting-text" dangerouslySetInnerHTML={this.createMarkup(post.excerpt.rendered)}>
             </div>

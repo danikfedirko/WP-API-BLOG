@@ -24,36 +24,42 @@ const Archive = createReactClass ({
     },
 
     handlePaginationClick(pageNum) {
-        this.props.fetchPosts(pageNum, 10);
+      const {fetchPosts, location, match} = this.props
+      window.scrollTo(0, 0);
+      if(location.pathname.includes('category')){
+      fetchPosts('?categories=' + match.params.id + '&per_page=10&page='+pageNum+'&orderby=date', pageNum)
+    }
+    else if(location.pathname.includes('search')){
+    fetchPosts('?search=' + match.params.searchWord + '&per_page=10&page='+pageNum+'&orderby=date', pageNum)
+  }
     },
 
     buildPagination(pageNum, totalPages) {
-        const prevText = "Previous";
-        const nextText = "Next";
+        const prevText = <i className="material-icons">keyboard_arrow_left</i>;
+        const nextText = <i className="material-icons">keyboard_arrow_right</i>;
 
         let prevLink = {
-            link: <a>{prevText}</a>,
+            link: <a className="prev">{prevText}</a>,
             enabled: false
         };
 
         let nextLink = {
-            link: <Link to="/" onClick={() => this.handlePaginationClick(pageNum + 1)}>{nextText}</Link>,
+            link: <Link className="next" to={this.props.location.pathname} onClick={() => this.handlePaginationClick(pageNum + 1)}>{nextText}</Link>,
             enabled: true
         };
 
         if (pageNum > 1 && pageNum < totalPages) {
-            prevLink.link = <Link to="/" onClick={() => this.handlePaginationClick(pageNum - 1)}>{prevText}</Link>;
+            prevLink.link = <Link className="prev" to={this.props.location.pathname} onClick={() => this.handlePaginationClick(pageNum - 1)}>{prevText}</Link>;
             prevLink.enabled = true;
         } else if (pageNum == totalPages) {
-            nextLink.link = <a>{nextText}</a>;
+            nextLink.link = <a className="next">{nextText}</a>;
             nextLink.enabled = false;
 
-            prevLink.link = <Link to="/" onClick={() => this.handlePaginationClick(pageNum - 1)}>{prevText}</Link>;
+            prevLink.link = <Link className="prev" to={this.props.location.pathname} onClick={() => this.handlePaginationClick(pageNum - 1)}>{prevText}</Link>;
             prevLink.enabled = true;
         }
 
         return (
-            <nav>
                 <ul className="pager">
                     {[prevLink, nextLink].map((link, index) =>
                         <li key={index} className={link.enabled ? "" : "disabled"}>
@@ -61,7 +67,6 @@ const Archive = createReactClass ({
                         </li>
                     )}
                 </ul>
-            </nav>
         );
     },
 
@@ -70,8 +75,13 @@ const Archive = createReactClass ({
 
         return (
             <div className="article-listing mdl-cell mdl-cell--8-col">
+              { (posts.length > 0) ?
+                <div>
                 {this.buildPosts(posts)}
                 {this.buildPagination(parseInt(pageNum), totalPages)}
+              </div>
+                : <h3>Ничего не найдено</h3>
+              }
             </div>
         );
     }

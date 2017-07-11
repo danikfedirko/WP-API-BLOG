@@ -15,11 +15,13 @@ export default function posts(state = defaultState, action) {
         fetching: true
       }
     case RECEIVE_POSTS:
-      const {posts} = action.payload;
+      const {posts, pageNum, totalPages} = action.payload;
       return {
         ...state,
         posts: posts,
-        fetching: false
+        fetching: false,
+        pageNum: pageNum,
+        totalPages: parseInt(totalPages)
       }
     case FETCH_POSTS_ERROR:
       const {err} = action.payload;
