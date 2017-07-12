@@ -4,13 +4,13 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
 import ProgressiveImage from 'react-progressive-bg-image';
-import ReadMoreButton from './ReadMoreButton'
+import {Card,CardActions,CardMedia,CardTitle,CardText} from 'material-ui/Card';
 
 const CategorieBlockPost = createReactClass({
   getInitialState: function() {
     return {thumbFetching: true, thumbSrcSmall: '', thumbSrcNormal: ''};
   },
-  componentWillMount: function() {
+  componentDidMount: function() {
     const {featuredmedia} = this.props
     axios.get(featuredmedia).then((response) => {
       const m_sizes = response.data["media_details"].sizes
@@ -26,8 +26,8 @@ const CategorieBlockPost = createReactClass({
     const {post, link} = this.props;
     return (
       <article className="animated fadeIn">
-        <div className="mdl-card mdl-shadow--2dp">
-          <div className="post-thumbnail mdl-card--expand">
+        <Card className="card">
+          <div className="post-thumbnail">
             {this.state.thumbFetching
               ? <div style={{
                   backgroundColor: '#ccc',
@@ -39,18 +39,10 @@ const CategorieBlockPost = createReactClass({
               }}/>
             }
           </div>
-          <div className="mdl-card__supporting-text">
-            <Link to={{
-              pathname: post.slug + '--' + post.id,
-              query: {
-                id: post.id
-              }
-            }}>
-              <h4 dangerouslySetInnerHTML={this.createMarkup(post.title.rendered)}></h4>
+            <Link to={'/'+post.slug + '--' + post.id}>
+              <CardTitle><h3 dangerouslySetInnerHTML={this.createMarkup(post.title.rendered)}></h3></CardTitle>
             </Link>
-          </div>
-
-        </div>
+        </Card>
       </article>
     );
   }

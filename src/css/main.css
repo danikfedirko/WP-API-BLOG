@@ -17,7 +17,7 @@ a {
   text-decoration: none;
   color: #333; }
 
-.mdl-card {
+.card {
   width: 100%;
   height: 100%;
   position: relative; }
@@ -81,14 +81,15 @@ a {
     padding-right: calc( 10px/2 );
     padding-left: calc( 10px/2 );
     margin-bottom: 2em; }
-  .categorie-posts .post-thumbnail {
-    height: 10em; }
   .categorie-posts .thumb-blured {
     -webkit-filter: blur(3px);
     -moz-filter: blur(3px);
     -o-filter: blur(3px);
     -ms-filter: blur(3px);
     filter: blur(3px); }
+
+.post-thumbnail {
+  height: 10em; }
 
 .categorie-title:first-child h3 {
   margin-top: 0; }
@@ -104,11 +105,19 @@ a {
 .single-post .thumbnail img {
   width: 100%; }
 .single-post .relatedPosts {
+  margin-top: 2em;
   display: flex;
   align-items: stretch;
   flex-flow: row;
   flex-wrap: wrap;
   align-content: space-around; }
+  .single-post .relatedPosts article {
+    box-sizing: border-box;
+    flex: 1 1 33.3333%;
+    margin: 0;
+    padding-right: calc( 10px/2 );
+    padding-left: calc( 10px/2 );
+    margin-bottom: 2em; }
 
 /*Sidebar*/
 #sidebar {

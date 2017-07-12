@@ -3,21 +3,24 @@ import PropTypes from 'prop-types';
 import createReactClass from 'create-react-class'
 import {Link} from 'react-router-dom'
 import { URL } from '../wp-url';
+import {Card,CardTitle,CardText} from 'material-ui/Card'
 
 const RelatedPost = createReactClass({
   render() {
     const {post, thumbSrc} = this.props
     return (
-      <div className="mdl-cell mdl-cell--4-col">
-      <article className="mdl-card mdl-shadow--2dp">
-        <div className="mdl-card__title mdl-card--expand" style={{
-          backgroundImage: 'url(' + thumbSrc + ')'
+      <article>
+        <Card className="card">
+        <div className="post-thumbnail" style={{
+          backgroundImage: 'url(' + thumbSrc + ')',
+          backgroundSize:'cover',
+          backgroundPosition:'center'
         }}></div>
-        <div className="mdl-card__supporting-text">
-          <Link to={{pathname:post.url.replace(URL,'').replace('/','')+'--'+post.id, query: { id: post.id } }}><h2 className="mdl-card__title-text">{post.title}</h2></Link>
-        </div>
+          <Link to={'/'+post.url.replace(URL,'').replace('/','')+'--'+post.id}>
+            <CardTitle title={post.title}></CardTitle>
+          </Link>
+      </Card>
       </article>
-    </div>
     )
   }
 })

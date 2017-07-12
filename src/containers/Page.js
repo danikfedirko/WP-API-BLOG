@@ -6,6 +6,7 @@ import {fetchPage} from '../actions/page'
 import {fetchThumb} from '../actions/fetchThumb'
 import Menu from './Menu'
 import ProgressiveImage from 'react-progressive-bg-image';
+import {Card, CardTitle, CardText} from 'material-ui/Card'
 
 const Page = createReactClass({
   componentWillMount: function() {
@@ -16,8 +17,8 @@ const Page = createReactClass({
   createMarkup(html) {
     return {__html: html};
   },
-  pageTitle(title){
-    document.title = title;
+  componentDidMount: function() {
+      document.title = this.props.pageTitle;
   },
   render() {
     const {
@@ -28,37 +29,38 @@ const Page = createReactClass({
       thumbFetching,
       thumbSrcSmall,
       thumbSrcNormal,
-      fetchThumb
+      fetchThumb,
+      pageFetching
     } = this.props
     fetchThumb(pageThumb)
     return (
-      <div className="page align-center">
         <article className="single-post mdl-cell mdl-cell--8-col">
-          <div className="mdl-shadow--4dp mdl-card">
+          { pageFetching ?
+            <div className="preloader"/>
+            :
+          <Card className="card">
             {/*Thumbnail*/}
-            <div className="thumbnail">
               {thumbFetching
-                ? <div style={{
+                ? <ProgressiveImage className="thumbnail" placeholder={thumbSrcSmall} src={thumbSrcNormal} blur={2} opacity={1} transition="all 1s linear" style={{
+                  backgroundSize: 'cover',
+                  backgroundPosition:'center'
+                }}/>
+                :
+                <div style={{
                     backgroundColor: '#ccc',
-                    height: '100%',
+                    height: '20em',
                     width: '100%'
                   }}></div>
-                : <ProgressiveImage placeholder={thumbSrcSmall} src={thumbSrcNormal} blur={2} opacity={1} transition="all 1s linear" style={{
-                  backgroundSize: 'cover'
-                }}/>
-}
-            </div>
+                }
             {/*Post meta*/}
             <div className="post-meta">
-              <h1 className="title" dangerouslySetInnerHTML={this.createMarkup(pageTitle.rendered)}></h1>
-              {this.pageTitle(pageTitle.rendered)}
-              <span className="mdl-card__subtitle-text">{pageDate}</span>
+              <CardTitle subtitle={pageDate}><h1 className="title" dangerouslySetInnerHTML={this.createMarkup(pageTitle.rendered)}></h1></CardTitle>
             </div>
             {/*Post content*/}
-            <div className="inner-content" dangerouslySetInnerHTML={this.createMarkup(pageContent.rendered)}></div>
-          </div>
+            <CardText className="inner-content" dangerouslySetInnerHTML={this.createMarkup(pageContent.rendered)}/>
+          </Card>
+        }
         </article>
-      </div>
     )
   }
 })
@@ -74,12 +76,13 @@ Page.PropTypes = {
 function mapStateToProps(state) {
   return {
     pageContent: state.page.pageContent,
+    pageFetching: state.page.fetching,
     pageTitle: state.page.pageTitle,
     pageDate: state.page.pageDate,
     pageThumb: state.page.pageThumb,
     thumbSrcSmall: state.fetchThumb.thumbSrcSmall,
     thumbSrcNormal: state.fetchThumb.thumbSrcNormal,
-    thumbFetching: state.fetchThumb.fetching,
+    thumbFetching: state.fetchThumb.fetched,
     relatedPosts: state.fetchSinglePost.relatedPosts
   }
 }

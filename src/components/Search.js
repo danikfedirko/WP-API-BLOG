@@ -1,24 +1,25 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import createReactClass from 'create-react-class'
+import TextField from 'material-ui/TextField';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 const Search = createReactClass({
   render () {
+    var buttonStyle ={
+      boxShadow:'none'
+    }
     return (
       <form onSubmit={this.props.onSubmitSearch}>
-        <label className="mdl-button mdl-js-button mdl-button--icon">
-          <Link to={"/search/"+this.props.searchWord}>
-            <button type="submit">
+          <Link style={{display:'inline-block',verticalAlign:'bottom'}} to={"/search/"+this.props.searchWord}>
+            <FloatingActionButton type="submit" mini={true} iconStyle={{color:'#333'}} backgroundColor='transparent' style={buttonStyle}>
             <i className="material-icons">search</i>
-            </button>
+            </FloatingActionButton>
           </Link>
-        </label>
-        <div className="mdl-textfield mdl-js-textfield">
-          <input className="mdl-textfield__input" type="text"
+          <TextField type="text"
             onChange={this.props.onUpdateSearch}
-            value={this.props.searchWord}/>
-          <label className="mdl-textfield__label">Search</label>
-        </div>
+            value={this.props.searchWord}
+            hintText="Поиск"/>
       </form>
     )
   }

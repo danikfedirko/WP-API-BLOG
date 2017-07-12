@@ -1,18 +1,16 @@
 import React, { PropTypes } from 'react'
 import {Link} from 'react-router-dom'
+import FlatButton from 'material-ui/FlatButton';
 
 const ReadMoreButton = React.createClass({
   render () {
     const {post} = this.props
     return (
-      <Link className="mdl-button mdl-js-button" to={{
-        pathname: post.slug + '--' + post.id,
-        query: {
-          id: post.id
-        }
-      }}>
+      <FlatButton>
+      <Link to={'/'+post.slug + '--' + post.id}>
         Читать далее
       </Link>
+    </FlatButton>
     )
   }
 })

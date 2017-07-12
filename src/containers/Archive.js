@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/posts';
 import {Link} from 'react-router-dom'
 import ArchivePost from '../components/ArchivePost';
+import {GridList} from 'material-ui/GridList';
 
 const Archive = createReactClass ({
-
     componentWillMount() {
         const {fetchPosts, pageNum = 1, location, match} = this.props
         if(location.pathname.includes('category')){
@@ -71,16 +71,23 @@ const Archive = createReactClass ({
     },
 
     render() {
-        const { posts, totalPages, pageNum = 1 } = this.props;
+        const { posts, totalPages, pageNum = 1, fetching } = this.props;
 
         return (
-            <div className="article-listing mdl-cell mdl-cell--8-col">
-              { (posts.length > 0) ?
-                <div>
+            <div className="mdl-cell mdl-cell--8-col">
+              { fetching ?
+                  <div className="preloader"/>
+                :
+              <div>
+                { (posts.length > 0) ?
+              <div className="article-listing">
                 {this.buildPosts(posts)}
                 {this.buildPagination(parseInt(pageNum), totalPages)}
               </div>
                 : <h3>Ничего не найдено</h3>
+                }
+              </div>
+
               }
             </div>
         );
@@ -95,6 +102,7 @@ Archive.PropTypes={
 
 function mapStateToProps(state) {
     return {
+       fetching:state.posts.fetching,
         posts: state.posts.posts,
         pageNum: state.posts.pageNum,
         totalPages: state.posts.totalPages

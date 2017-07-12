@@ -7,7 +7,7 @@ import {fetchThumb} from '../actions/fetchThumb'
 import Menu from './Menu'
 import RelatedPost from '../components/RelatedPost'
 import SidebarHomePage from './SidebarHomePage'
-import Comments from '../components/Comments'
+import {Card, CardTitle, CardText} from 'material-ui/Card'
 import ProgressiveImage from 'react-progressive-bg-image';
 
 const SinglePost = createReactClass({
@@ -19,8 +19,8 @@ const SinglePost = createReactClass({
   createMarkup(html) {
     return {__html: html};
   },
-  postTitle(title) {
-    document.title = title;
+  componentDidMount() {
+    document.title = this.props.postTitle;
   },
   render() {
     const {
@@ -39,43 +39,41 @@ const SinglePost = createReactClass({
     return (
       <div className="post single mdl-cell mdl-cell--8-col">
         <div className="primary">
-          { postFetching ?
-            <div className="preloader"></div>
-            :
-          <article className="single-post">
-            <div className="mdl-shadow--4dp mdl-card">
-              {/*Thumbnail*/}
-              <div className="thumbnail">
-                {thumbFetching
-                  ? <ProgressiveImage placeholder={thumbSrcSmall} src={thumbSrcNormal} blur={2} opacity={1} transition="all 1s linear" style={{
-                    backgroundSize: 'cover'
-                  }}/>
-                  :
-                  <div style={{
+          {postFetching
+            ? <div className="preloader"></div>
+            : <article className="single-post">
+              <Card className="card">
+                {/*Thumbnail*/}
+                <div className="thumbnail">
+                  {thumbFetching
+                    ? <ProgressiveImage placeholder={thumbSrcSmall} src={thumbSrcNormal} blur={2} opacity={1} transition="all 1s linear" style={{
+                        backgroundSize: 'cover',
+                        backgroundPosition:'center'
+                      }}/>
+                    : <div style={{
                       backgroundColor: '#ccc',
                       height: '100%',
                       width: '100%'
                     }}></div>
-                }
+}
+                </div>
+                {/*Post meta*/}
+                <div className="post-meta">
+                  <CardTitle subtitle={postDate}>
+                    <h1 className="title" dangerouslySetInnerHTML={this.createMarkup(postTitle.rendered)}></h1>
+                  </CardTitle>
+                </div>
+                {/*Post content*/}
+                <CardText className="inner-content" dangerouslySetInnerHTML={this.createMarkup(postContent.rendered)}/>
+              </Card>
+              <div className="relatedPosts">
+                {/*Related Posts*/}
+                {relatedPosts.map(post => {
+                  return <RelatedPost post={post} thumbSrc={post.img.src}/>
+                })}
               </div>
-              {/*Post meta*/}
-              <div className="post-meta">
-                <h1 className="title" dangerouslySetInnerHTML={this.createMarkup(postTitle.rendered)}></h1>
-                {this.postTitle(postTitle.rendered)}
-                <span className="mdl-card__subtitle-text">{postDate}</span>
-              </div>
-              {/*Post content*/}
-              <div className="inner-content" dangerouslySetInnerHTML={this.createMarkup(postContent.rendered)}></div>
-            </div>
-            <Comments/>
-            <div className="relatedPosts">
-              {/*Related Posts*/}
-              {relatedPosts.map(post => {
-                return <RelatedPost post={post} thumbSrc={post.img.src}/>
-              })}
-            </div>
-          </article>
-        }
+            </article>
+}
         </div>
       </div>
     )
@@ -93,7 +91,7 @@ SinglePost.PropTypes = {
 
 function mapStateToProps(state) {
   return {
-    postFetching:state.fetchSinglePost.fetching,
+    postFetching: state.fetchSinglePost.fetching,
     postContent: state.fetchSinglePost.postContent,
     postTitle: state.fetchSinglePost.postTitle,
     postDate: state.fetchSinglePost.postDate,

@@ -21,7 +21,7 @@ a {
   color: #333;
 }
 
-.mdl-card {
+.card {
   width: 100%;
   height: 100%;
   position: relative;
@@ -104,10 +104,6 @@ a {
     margin-bottom: 2em;
   }
 
-  .post-thumbnail {
-    height: 10em;
-  }
-
   .thumb-blured {
     -webkit-filter: blur(3px);
     -moz-filter: blur(3px);
@@ -115,6 +111,9 @@ a {
     -ms-filter: blur(3px);
     filter: blur(3px);
   }
+}
+.post-thumbnail {
+  height: 10em;
 }
 
 .categorie-title:first-child h3 {
@@ -141,11 +140,21 @@ a {
   }
 
   .relatedPosts {
+    margin-top: 2em;
     display: flex;
     align-items: stretch;
     flex-flow: row;
     flex-wrap: wrap;
     align-content: space-around;
+
+    article{
+      box-sizing: border-box;
+      flex: 1 1 33.3333%;
+      margin: 0;
+      padding-right: calc( 10px/2 );
+      padding-left: calc( 10px/2 );
+      margin-bottom: 2em;
+    }
   }
 }
 /*Sidebar*/
