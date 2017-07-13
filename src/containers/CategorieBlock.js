@@ -20,7 +20,7 @@ const CategorieBlock = createReactClass({
       this.setState({categoriePosts: response.data,fetching:false})
     })
   },
-  componentWillMount: function() {
+  componentDidMount: function() {
     const {categorie} = this.props
     this.buildPosts(categorie)
   },

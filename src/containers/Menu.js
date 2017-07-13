@@ -79,9 +79,10 @@ return menuItems
           :
           <div>
         <AppBar title={<Link to='/'>{websiteTitle}</Link>}
-          style={{backgroundColor:'transparent',boxShadow:'none'}}
-          className="animated fadeInDown mdl-layout__header--transparent"
-          onLeftIconButtonTouchTap={this.handleToggle}>
+          style={{backgroundColor:'transparent',boxShadow:'none',color:'#333'}}
+          className="animated fadeInDown header"
+          onLeftIconButtonTouchTap={this.handleToggle}
+          iconStyleLeft={{color:'#333',textColor:'#333'}}>
           <div className="mdl-layout__header-row">
             {/* Title */}
 

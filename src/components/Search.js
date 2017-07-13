@@ -10,7 +10,7 @@ const Search = createReactClass({
       boxShadow:'none'
     }
     return (
-      <form onSubmit={this.props.onSubmitSearch}>
+      <form className="search-form" onSubmit={this.props.onSubmitSearch}>
           <Link style={{display:'inline-block',verticalAlign:'bottom'}} to={"/search/"+this.props.searchWord}>
             <FloatingActionButton type="submit" mini={true} iconStyle={{color:'#333'}} backgroundColor='transparent' style={buttonStyle}>
             <i className="material-icons">search</i>

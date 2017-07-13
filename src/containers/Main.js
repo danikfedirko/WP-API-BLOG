@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Menu from './Menu'
 import Categories from './Categories'
 import SidebarHomePage from './SidebarHomePage'
+import Popup from './Popup'
 
 var Home = createReactClass({
   render () {
@@ -14,6 +15,7 @@ var Home = createReactClass({
           {this.props.children}
           <SidebarHomePage/>
         </div>
+        <Popup/>
       </div>
     )
   }
