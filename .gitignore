@@ -4,5 +4,4 @@ build
 database.rules.json
 firebase.json
 functions
-src/server.js
 src/views

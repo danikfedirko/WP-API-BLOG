@@ -11,6 +11,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-draggable": "^2.2.6",
+    "react-helmet": "^4.0.0",
     "react-progressive-bg-image": "^2.0.4",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
@@ -23,10 +24,13 @@
     "styled-components": "^2.1.1"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7"
+    "react-scripts": "1.0.7",
+    "react-snapshot": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:server": "NODE_ENV=development node server/index.js",
+    "now-start": "NODE_ENV=production node server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

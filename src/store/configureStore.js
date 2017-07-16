@@ -3,7 +3,7 @@ import rootReducer from '../reducers/index';
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 
-var middleware = applyMiddleware(thunk, logger)
+var middleware = applyMiddleware(thunk)
 
 export default function configureStore() {
   return(
