@@ -3,7 +3,7 @@ import Search from '../components/Search'
 import {fetchPosts} from '../actions/posts';
 import {connect} from 'react-redux';
 import createReactClass from 'create-react-class'
-
+var createHistory = require('history').createBrowserHistory;
 var history = createHistory()
 
 const SearchHandler = createReactClass({
@@ -15,7 +15,7 @@ const SearchHandler = createReactClass({
     this.setState({searchWord: event.target.value})
     event.preventDefault();
     fetchPosts('?search=' + event.target.value + '&per_page=10&orderby=date');
-    
+    history.push('/search/' + this.state.searchWord)
   },
   render() {
     return (
