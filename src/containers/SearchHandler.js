@@ -3,8 +3,8 @@ import Search from '../components/Search'
 import {fetchPosts} from '../actions/posts';
 import {connect} from 'react-redux';
 import createReactClass from 'create-react-class'
-var createHistory = require('history').createBrowserHistory;
-var history = createHistory()
+var createMemoryHistory = require('history').createMemoryHistory;
+var history = createMemoryHistory()
 
 const SearchHandler = createReactClass({
   getInitialState() {

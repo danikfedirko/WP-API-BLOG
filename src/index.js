@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux'
 import configureStore from './store'
 import './static/css/main.css';
@@ -27,7 +27,7 @@ export const theme = {
 };
 
 window.onload = () => {
-render(
+ReactDOM.render(
   <Provider store={store}>
   <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
     <MuiThemeProvider theme={theme}>
