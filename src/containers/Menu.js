@@ -20,11 +20,19 @@ var Menu = createReactClass({
   },
   getInitialState: function() {
     return {
-      open: false
+      open: false,
+      showHumburger: false
     };
   },
   componentDidMount(){
-    document.title = this.props.websiteTitle
+  const mq = window.matchMedia( "(min-width: 1200px)" );
+  if (mq.matches) {
+
+} else {
+  this.setState({
+    showHumburger:true
+  })
+}
   },
   showDropdown(menu_item) {
     if (menu_item.children != undefined && Object.keys(menu_item.children).length > 0) {
@@ -78,11 +86,12 @@ return menuItems
             <div></div>
           :
           <div>
-        <AppBar title={<Link to='/'>{websiteTitle}</Link>}
+        <AppBar title={<Link className="website-title" to='/'>{websiteTitle}</Link>}
           style={{backgroundColor:'transparent',boxShadow:'none',color:'#333'}}
           className="animated fadeInDown header"
           onLeftIconButtonTouchTap={this.handleToggle}
-          iconStyleLeft={{color:'#333',textColor:'#333'}}>
+          showMenuIconButton={this.state.showHumburger}
+          iconStyleLeft={{fill:'#333'}}>
           <div className="mdl-layout__header-row">
             {/* Title */}
 
