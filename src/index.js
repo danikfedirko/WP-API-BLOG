@@ -7,6 +7,7 @@ import './static/css/main.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {grey900, grey400, grey100, grey500} from 'material-ui/styles/colors';
 import App from './containers/App'
 // Needed for onTouchTap
@@ -30,7 +31,7 @@ window.onload = () => {
 ReactDOM.render(
   <Provider store={store}>
   <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
-    <MuiThemeProvider theme={theme}>
+    <MuiThemeProvider muiTheme={getMuiTheme({userAgent: navigator.userAgent})}>
      <App/>
     </MuiThemeProvider>
   </BrowserRouter>
