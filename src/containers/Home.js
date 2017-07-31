@@ -1,13 +1,13 @@
 import React from 'react'
 import createReactClass from 'create-react-class'
-import PropTypes from 'prop-types';
-import Menu from './Menu'
 import Categories from './Categories'
+import Title from '../components/Title'
 
 var Home = createReactClass({
   render () {
     return (
       <div className="home mdl-cell mdl-cell--8-col">
+        <Title title=''/>
           <Categories/>
       </div>
     )

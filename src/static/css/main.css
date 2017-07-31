@@ -51,6 +51,10 @@ a {
   display: inline-block; }
 .header .mdl-textfield__input {
   color: #333; }
+.header .humburger {
+  color: #333; }
+.header svg {
+  fill: #333 !important; }
 
 /* Articles listing */
 .article-listing {

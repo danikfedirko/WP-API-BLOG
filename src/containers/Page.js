@@ -5,6 +5,7 @@ import createReactClass from 'create-react-class'
 import {fetchPage} from '../actions/page'
 import {fetchThumb} from '../actions/fetchThumb'
 import Menu from './Menu'
+import Title from '../components/Title'
 import ProgressiveImage from 'react-progressive-bg-image';
 import {Card, CardTitle, CardText} from 'material-ui/Card'
 
@@ -16,9 +17,6 @@ const Page = createReactClass({
   },
   createMarkup(html) {
     return {__html: html};
-  },
-  componentDidMount: function() {
-      document.title = this.props.pageTitle;
   },
   render() {
     const {
@@ -35,6 +33,7 @@ const Page = createReactClass({
     fetchThumb(pageThumb)
     return (
         <article className="single-post mdl-cell mdl-cell--8-col">
+          <Title title={pageTitle}/>
           { pageFetching ?
             <div className="preloader"/>
             :
