@@ -1,1 +1,4 @@
 node_modules
+homepage
+src
+.sass-cache
