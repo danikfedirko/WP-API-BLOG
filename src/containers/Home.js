@@ -7,7 +7,6 @@ var Home = createReactClass({
   render () {
     return (
       <div className="home mdl-cell mdl-cell--8-col">
-        <p>home</p>
           <Categories/>
       </div>
     )

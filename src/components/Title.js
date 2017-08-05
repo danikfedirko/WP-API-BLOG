@@ -2,10 +2,10 @@ import React, { PropTypes } from 'react'
 import Helmet from "react-helmet";
 
 const Title = React.createClass({
-  componentDidMount: function() {
+  componentDidMount(props) {
     document.title = this.props.title.rendered
   },
-  render (props) {
+  render () {
     return (
       <div></div>
     )
