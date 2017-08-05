@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import createReactClass from 'create-react-class'
 import {fetchPage} from '../actions/page'
 import {fetchThumb} from '../actions/fetchThumb'
-import Menu from './Menu'
 import Title from '../components/Title'
 import ProgressiveImage from 'react-progressive-bg-image';
 import {Card, CardTitle, CardText} from 'material-ui/Card'

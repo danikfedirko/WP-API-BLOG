@@ -2,11 +2,10 @@ import React, { PropTypes } from 'react'
 import Helmet from "react-helmet";
 
 const Title = React.createClass({
-  render () {
+  render (props) {
+      document.title = this.props.title.rendered
     return (
-      <Helmet>
-        <title>{this.props.title}</title>
-      </Helmet>
+      <div></div>
     )
   }
 })

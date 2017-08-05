@@ -7,8 +7,10 @@ import {fetchThumb} from '../actions/fetchThumb'
 import Menu from './Menu'
 import RelatedPost from '../components/RelatedPost'
 import SidebarHomePage from './SidebarHomePage'
+import Title from '../components/Title'
 import {Card, CardTitle, CardText} from 'material-ui/Card'
 import ProgressiveImage from 'react-progressive-bg-image';
+import SocialShare from '../components/SocialShare'
 
 const SinglePost = createReactClass({
   componentWillMount: function() {
@@ -38,25 +40,29 @@ const SinglePost = createReactClass({
     fetchThumb(postThumb)
     return (
       <div className="post single mdl-cell mdl-cell--8-col">
+        <Title title={postTitle}/>
         <div className="primary">
-          {postFetching
-            ? <div className="preloader"></div>
-            : <article className="single-post">
-              <Card className="card">
-                {/*Thumbnail*/}
-                <div className="thumbnail">
-                  {thumbFetching
-                    ? <ProgressiveImage placeholder={thumbSrcSmall} src={thumbSrcNormal} blur={2} opacity={1} transition="all 1s linear" style={{
-                        backgroundSize: 'cover',
-                        backgroundPosition:'center'
-                      }}/>
-                    : <div style={{
-                      backgroundColor: '#ccc',
-                      height: '100%',
-                      width: '100%'
-                    }}></div>
+          <article className="single-post">
+            <Card className="card">
+              {/*Thumbnail*/}
+              <div className="thumbnail">
+                {thumbFetching
+                  ? <ProgressiveImage placeholder={thumbSrcSmall} src={thumbSrcNormal} blur={2} opacity={1} transition="all 1s linear" style={{
+                      backgroundSize: 'cover',
+                      backgroundPosition:'center'
+                    }}/>
+                  : <div style={{
+                    backgroundColor: '#ccc',
+                    height: '100%',
+                    width: '100%'
+                  }}></div>
 }
-                </div>
+              </div>
+          {postFetching
+            ?
+                <div className="preloader"></div>
+            :
+              <div className="inner-content">
                 {/*Post meta*/}
                 <div className="post-meta">
                   <CardTitle subtitle={postDate}>
@@ -64,7 +70,10 @@ const SinglePost = createReactClass({
                   </CardTitle>
                 </div>
                 {/*Post content*/}
-                <CardText className="inner-content" dangerouslySetInnerHTML={this.createMarkup(postContent.rendered)}/>
+                <CardText dangerouslySetInnerHTML={this.createMarkup(postContent.rendered)}/>
+                <SocialShare/>
+                </div>
+                }
               </Card>
               <div className="relatedPosts">
                 {/*Related Posts*/}
@@ -73,7 +82,6 @@ const SinglePost = createReactClass({
                 })}
               </div>
             </article>
-}
         </div>
       </div>
     )
